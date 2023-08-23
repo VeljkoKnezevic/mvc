@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Name & Date HTML example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+    <h1>Book display info</h1>
+
+    <div>
+        <h2>Name of the book</h2>
+        <p th:text="${name}"></p>
+    </div>
+    <div>
+        <h2>Year of release of the book</h2>
+        <p th:text="${date}"></p>
+    </div>
+    <div>
+        <h2>Book id</h2>
+        <p th:text="${id}"></p>
+    </div>
+</body>
+</html>
