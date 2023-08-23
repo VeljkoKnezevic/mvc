@@ -6,7 +6,7 @@ public class Main {
         BookView view = new BookView();
         BookController controller = new BookController(model,view);
 
-        controller.display();
+        controller.runApp();
 
     }
     public static Book bookDb() {

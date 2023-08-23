@@ -1,3 +1,5 @@
+import io.javalin.Javalin;
+
 public class BookController {
     private Book model;
     private BookView view;
@@ -41,8 +43,11 @@ public class BookController {
         return model.getId();
     }
 
-    public void display() {
-        view.runView(model.getName(), model.getDate(), model.getId());
+    public void runApp() {
+        String result = view.runView(model.getName(), model.getDate(), model.getId());
+        Javalin app = Javalin.create().start(7070);
+
+        app.get("/", ctx -> ctx.html(result));
     }
 
 }

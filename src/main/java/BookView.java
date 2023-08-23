@@ -1,4 +1,3 @@
-import io.javalin.Javalin;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 import org.thymeleaf.templatemode.TemplateMode;
@@ -12,7 +11,7 @@ public class BookView {
         System.out.println("Id: " + bookId);
     }
 
-    public void runView(String bookName, int bookReleaseDate, int bookId) {
+    public String runView(String bookName, int bookReleaseDate, int bookId) {
         var resolver = new ClassLoaderTemplateResolver();
         resolver.setTemplateMode(TemplateMode.HTML);
         resolver.setCharacterEncoding("UTF-8");
@@ -24,13 +23,9 @@ public class BookView {
         context.setVariable("date", bookReleaseDate);
         context.setVariable("id", bookId);
 
-        var templateEngine = new TemplateEngine();
+        TemplateEngine templateEngine = new TemplateEngine();
         templateEngine.setTemplateResolver(resolver);
 
-        var result = templateEngine.process("index", context);
-
-        Javalin app = Javalin.create().start(7070);
-
-        app.get("/", ctx -> ctx.html(result));
+        return templateEngine.process("index", context);
     }
 }
