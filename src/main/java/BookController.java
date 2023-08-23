@@ -45,9 +45,12 @@ public class BookController {
 
     public void runApp() {
         String result = view.runView(model.getName(), model.getDate(), model.getId());
-        Javalin app = Javalin.create().start(7070);
-
-        app.get("/", ctx -> ctx.html(result));
+        try {
+            Javalin app = Javalin.create().start(7070);
+            app.get("/", ctx -> ctx.html(result));
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+        }
     }
 
 }
